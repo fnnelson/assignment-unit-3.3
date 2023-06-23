@@ -40,14 +40,53 @@ console.log('supplyChanges is now:', supplyChanges);
 //    - if the value is negative, format the log as 'Removed x parts.' 
 console.log('6. Showing supplyChanges...');
 
+for (let i = 0; i < supplyChanges.length; i++) {
+    if (supplyChanges[i] > 0) {
+        console.log(`Added ${supplyChanges[i]} parts.`);
+    } else if (supplyChanges[i] == 0) {
+        console.log("No Change.");
+    } else if (supplyChanges[i] < 0) {
+        console.log(`Removed ${supplyChanges[i]} parts.`);
+    }
+}
+
+//could also write it to give negative numbers an absolute value (so it says removed 6 parts instead of removed -6 parts):
+console.log('Using absolute value:')
+
+for (let i = 0; i < supplyChanges.length; i++) {
+    if (supplyChanges[i] > 0) {
+        console.log(`Added ${supplyChanges[i]} parts.`);
+    } else if (supplyChanges[i] == 0) {
+        console.log("No Change.");
+    } else if (supplyChanges[i] < 0) {
+        console.log(`Removed ${Math.abs(supplyChanges[i])} parts.`);
+    }
+}
+
 // STRETCH GOALS
 console.log('---  Stretch Goals  ---');
 // 7. Rewrite the `for` loop from #6 as a `for of` loop. 
 console.log('7. Showing supplyChanges with "for of" loop');
 
+for (change of supplyChanges) {
+    if (change > 0) {
+        console.log(`Added ${change} parts.`);
+    } else if (change == 0) {
+        console.log("No Change.");
+    } else if (change < 0) {
+        console.log(`Removed ${Math.abs(change)} parts.`);
+    }
+}
+
 // 8. Write a loop to determine the total number of parts available by
 //    adding up all the numbers in the 'supplyChanges' array.
 console.log('8. Total supplies available is:');
+
+let total = 0;
+for (i = 0; i < supplyChanges.length; i++) {
+    total += supplyChanges[i];
+}
+console.log("Total:", total);
 
 // 9. We have a large stash of parts in our warehouse that we 
 //    need to box up and get ready for shipment. 
@@ -56,3 +95,17 @@ console.log('8. Total supplies available is:');
 //    no more boxes can be filled.
 //    Then log how many boxes were filled, and how many parts are left over.
 console.log('9. Filling boxes with a "while" loop');
+
+let partsTotal = 572;
+const boxCapacity = 7;
+let filledBoxes = 0;
+
+while (partsTotal >= boxCapacity) {
+    partsTotal -= boxCapacity;
+    filledBoxes += 1;
+}
+console.log(`Boxes filled: ${filledBoxes}.`)
+console.log(`Remaining parts in warehouse: ${partsTotal}.`)
+
+//(I think) I did it right without looking anything up!  I worked through the logic very slowly until it made sense, but was still very surprised when it worked out in the console!  I had one error on my first try because I added index++ to the end of it (from remembering this part in While Loop lessons).. looking at the error it said there is no index defined, and I realized something like that is not needed for the while loop to continue. I'm pretty proud ngl, so I'm going to bask in it for now before we get to more complicated stuff.  
+//I get a little nervous about accidentally writing an infinite loop, so I'm trying to think out the logic a few times before refreshing the console
