@@ -24,7 +24,7 @@ console.log(supplyChanges[1]);
 //    array & console.log the value removed.
 console.log('4. Removed item:');
 
-console.log(supplyChanges.pop());
+console.log(supplyChanges.pop()); //this both removes the last item and logs it at the same time.  We could also assign it to a variable if desired.
 console.log('supplyChanges is now:', supplyChanges);
 
 // 5. A delivery of 25 more parts arrived. Add the value 25 to the end of the array
@@ -68,7 +68,7 @@ console.log('---  Stretch Goals  ---');
 // 7. Rewrite the `for` loop from #6 as a `for of` loop. 
 console.log('7. Showing supplyChanges with "for of" loop');
 
-for (change of supplyChanges) {
+for (let change of supplyChanges) {
     if (change > 0) {
         console.log(`Added ${change} parts.`);
     } else if (change == 0) {
@@ -83,7 +83,7 @@ for (change of supplyChanges) {
 console.log('8. Total supplies available is:');
 
 let total = 0;
-for (i = 0; i < supplyChanges.length; i++) {
+for (let i = 0; i < supplyChanges.length; i++) {
     total += supplyChanges[i];
 }
 console.log("Total:", total);
